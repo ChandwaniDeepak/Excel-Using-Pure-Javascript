@@ -1,9 +1,93 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
+        <link type="text/css" href="css/myStyleSheet.css" rel="stylesheet">
+        <script src="js/rowColumnController.js" ></script>
 
     </head>
     <body>
-    
+    <div id="rowColumnController">
+
+        <span style="min-width: 50%; float: left; child-align: middle;" >
+            Row:
+            <img src="img/minus.png" onclick="removeRow()" >
+            <img src="img/plus.png"  onclick="addRow()" >
+        </span>
+
+        <span style="min-width: 50%; float: right; child-align: middle;">
+            Column:
+            <img src="img/minus.png"  onclick="removeColumn()">
+            <img src="img/plus.png"  onclick="addColumn()" >
+        </span>
+
+
+
+    </div>
+    <div id="tableContainer" >
+        <table id="myTable" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr id="tableHeadRow">
+                <th id="minWidthTH"> </th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>E</th>
+                <th>F</th>
+                <th>G</th>
+                <th>H</th>
+                <th>I</th>
+                <th>J</th>
+                <th>K</th>
+                <th>L</th>
+                <th>M</th>
+                <th>N</th>
+                <th>O</th>
+                <th>P</th>
+                <th>Q</th>
+                <th>R</th>
+                <th>S</th>
+                <th>T</th>
+                <th>U</th>
+                <th>V</th>
+                <th>W</th>
+                <th>X</th>
+                <th>Y</th>
+                <!--<th>Z</th>-->
+                <!--<th>AA</th>-->
+                <!--<th>AB</th>-->
+                <!--<th>AC</th>-->
+                <!--<th>AD</th>-->
+                <!--<th>AE</th>-->
+                <!--<th>AF</th>-->
+                <!--<th>AG</th>-->
+                <!--<th>AH</th>-->
+                <!--<th>AI</th>-->
+                <!--<th>AJ</th>-->
+                <!--<th>AK</th>-->
+                <!--<th>AL</th>-->
+                <!--<th>AM</th>-->
+                <!--<th>AN</th>-->
+                <!--<th>AO</th>-->
+                <!--<th>AP</th>-->
+                <!--<th>AQ</th>-->
+                <!--<th>AR</th>-->
+                <!--<th>AS</th>-->
+                <!--<th>AT</th>-->
+                <!--<th>AU</th>-->
+                <!--<th>AV</th>-->
+                <!--<th>AW</th>-->
+                <!--<th>AX</th>-->
+                <!--<th>AY</th>-->
+                <!--<th>AZ</th>-->
+                <!--<th>BA</th>-->
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    </div>
+
     </body>
 </html>

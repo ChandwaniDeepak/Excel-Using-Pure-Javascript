@@ -1,0 +1,51 @@
+.minWidthTH{
+    background-color: lightblue;
+    min-width: 60px;
+    max-width: 60px;
+    height: 25px;
+    border: 1px solid black;
+}
+
+th{
+    background-color: lightblue;
+    min-width: 150px;
+    max-width: 150px;
+    height: 25px;
+    border: 1px solid black;
+}
+
+td{
+    min-width: 150px;
+    max-width: 150px;
+    height: 25px;
+    border: 1px solid black;
+}
+
+img{
+    height: 30px;
+    width: 30px;
+}
+
+
+/*.scroll-table, td, th {*/
+    /*border-collapse:collapse;*/
+    /*border:1px solid #777;*/
+    /*max-width: 250px;*/
+/*}*/
+
+.rowColumnController{
+    height: 130px;
+}
+span{
+    text-align: center;
+}
+
+
+
+.tableContainer{
+    overflow-x:auto;
+    overflow-y: auto;
+    min-height: 100%;
+    max-height: 100%;
+}
+
