@@ -18,9 +18,7 @@ function addRow()
     for(let i = 0; i < columnCount; i++)
     {
         let cell = addRow.insertCell(i);
-        cell.id = (myTableHead[i+1].innerHTML)+rowCount;
-        //cell.id = (myTableHead[i+1].innerHTML)+rowCount;
-        cell.contentEditable = 'true';
+
         //console.log("column id "+(myTableHead[i+1])+rowCount);
         //console.log("cell id "+(myTableHead[i+1].innerHTML)+rowCount);
         //table.rows[1].cells[i].headers
@@ -31,7 +29,14 @@ function addRow()
             cell.innerHTML = rowCount.toString();
             cell.style.textAlign = 'center';
             //console.log("column id "+(myTableHead[i+1].innerHTML)+rowCount);
-         }
+        }else if(i > 0)
+        {
+            cell.id = (myTableHead[i].innerHTML)+rowCount;
+            cell.contentEditable = 'true';
+            cell.onclick = function () {
+                selectedCell((myTableHead[i].innerHTML)+rowCount);
+            }
+        }
     }
     //alert("Row count: "+myTable.rows.length);
 }
@@ -43,8 +48,38 @@ function removeRow()
     //let columnHead = myTable.rows[0].cells;
     if(myTable.rows.length > 1) {
         myTable.deleteRow(myTable.rows.length - 1);
+    }else
+    {
+        alert('cannot delete the head');
     }
 }
+
+function selectedCell(id)
+{
+    //alert(id);
+    //alert(document.getElementById(id).innerHTML);
+    document.getElementById(id)
+        .addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                //document.getElementById("id_of_button").click();
+                //alert('Enter Clicked & value is : '+document.getElementById(id).innerHTML);
+                alert('Enter Clicked & value is : '+document.getElementById(id).textContent);
+            }
+        });
+}
+
+/*
+//// Enter click function
+document.getElementById("id_of_textbox")
+    .addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("id_of_button").click();
+        }
+    });
+*/
+
 
 function addColumn() {
     let tblHeadObj = document.getElementById('myTable').tHead; //table head
