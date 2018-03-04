@@ -56,15 +56,18 @@ function removeRow()
 
 function selectedCell(id)
 {
-    //alert(id);
+    
     //alert(document.getElementById(id).innerHTML);
     document.getElementById(id)
         .addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
+            	alert(id);
                 //document.getElementById("id_of_button").click();
                 //alert('Enter Clicked & value is : '+document.getElementById(id).innerHTML);
+                if(document.getElementById(id).textContent){
                 alert('Enter Clicked & value is : '+document.getElementById(id).textContent);
+				}
             }
         });
 }
@@ -127,6 +130,56 @@ function removeColumn()
         alert('cannot delete first column');
     }
 }
+function convertArrayOfObjectsToCSV(args) {
+        var result, ctr, keys, columnDelimiter, lineDelimiter, data;
+		data = args.data || null;
+        if (data == null || !data.length) {
+            return null;
+        }
+		console.log("Shantanu Deosthale");
+		console.log(data);
+		columnDelimiter = args.columnDelimiter || ',';
+        lineDelimiter = args.lineDelimiter || '\n';
+		keys = Object.keys(data);
+		result = '';
+        result += keys.join(columnDelimiter);
+        result += lineDelimiter;
+		data.forEach(function(item) {
+            ctr = 0;
+            keys.forEach(function(key) {
+                if (ctr > 0) result += columnDelimiter;
+
+                result += item[key];
+                ctr++;
+            });
+            result += lineDelimiter;
+        });
+		return result;
+    }
+function downloadCSV(args) {
+        var data, filename, link;
+        var myTable = document.querySelectorAll('td');
+		Data= [];
+ 		for(var i =0 ; i<myTable.length ; i++){   
+ 		Data.push(myTable[i].innerHTML);
+			}	
+        var csv = convertArrayOfObjectsToCSV({
+            data: Data
+        });
+	    if (csv == null) return;
+	    filename = args.filename || 'export.csv';
+
+        if (!csv.match(/^data:text\/csv/i)) {
+            csv = 'data:text/csv;charset=utf-8,' + csv;
+        }
+        data = encodeURI(csv);
+		link = document.createElement('a');
+        link.setAttribute('href', data);
+        console.log("Shantanu");
+        link.setAttribute('download', filename);
+        link.click();
+}
+
 
 
 
