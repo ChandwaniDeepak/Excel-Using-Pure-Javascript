@@ -56,7 +56,7 @@ function removeRow()
 
 function selectedCell(id)
 {
-    
+
     //alert(document.getElementById(id).innerHTML);
     document.getElementById(id)
         .addEventListener("keyup", function(event) {
@@ -156,13 +156,14 @@ function convertArrayOfObjectsToCSV(args) {
         });
 		return result;
     }
+
 function downloadCSV(args) {
         var data, filename, link;
         var myTable = document.querySelectorAll('td');
 		Data= [];
- 		for(var i =0 ; i<myTable.length ; i++){   
+ 		for(var i =0 ; i<myTable.length ; i++){
  		Data.push(myTable[i].innerHTML);
-			}	
+			}
         var csv = convertArrayOfObjectsToCSV({
             data: Data
         });
@@ -179,6 +180,10 @@ function downloadCSV(args) {
         link.setAttribute('download', filename);
         link.click();
 }
+
+
+
+
 
 
 
