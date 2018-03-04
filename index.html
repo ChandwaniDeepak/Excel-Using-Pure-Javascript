@@ -22,13 +22,12 @@
 
         <span style="min-width: 30%; float: right; child-align: middle;">
             <input type="submit" id="submit" value="submit"/>
+        
+         <button onclick="exportTableToCSV('developersera.csv')">Export HTML Table To CSV File</button>
+        
         </span>
-		<a href='#' onclick='downloadCSV({ filename: "stock-data.csv" });'>Download CSV</a>
-
-
+        
     </div>
-
-    <button onclick="exportTableToCSV('developersera.csv')">Export HTML Table To CSV File</button>
 
     <div id="tableContainer" >
         <table id="myTable" cellpadding="0" cellspacing="0">

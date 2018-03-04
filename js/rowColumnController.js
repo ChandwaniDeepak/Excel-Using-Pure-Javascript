@@ -130,55 +130,48 @@ function removeColumn()
         alert('cannot delete first column');
     }
 }
-function convertArrayOfObjectsToCSV(args) {
-        var result, ctr, keys, columnDelimiter, lineDelimiter, data;
-		data = args.data || null;
-        if (data == null || !data.length) {
-            return null;
-        }
-		console.log("Shantanu Deosthale");
-		console.log(data);
-		columnDelimiter = args.columnDelimiter || ',';
-        lineDelimiter = args.lineDelimiter || '\n';
-		keys = Object.keys(data);
-		result = '';
-        result += keys.join(columnDelimiter);
-        result += lineDelimiter;
-		data.forEach(function(item) {
-            ctr = 0;
-            keys.forEach(function(key) {
-                if (ctr > 0) result += columnDelimiter;
 
-                result += item[key];
-                ctr++;
-            });
-            result += lineDelimiter;
-        });
-		return result;
+function exportTableToCSV(filename) {
+    let csv = [];
+    let rows = document.querySelectorAll("table tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let row = [], cols = rows[i].querySelectorAll("td, th");
+
+        for (let j = 1; j < cols.length; j++)
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(","));
     }
 
-function downloadCSV(args) {
-        var data, filename, link;
-        var myTable = document.querySelectorAll('td');
-		Data= [];
- 		for(var i =0 ; i<myTable.length ; i++){
- 		Data.push(myTable[i].innerHTML);
-			}
-        var csv = convertArrayOfObjectsToCSV({
-            data: Data
-        });
-	    if (csv == null) return;
-	    filename = args.filename || 'export.csv';
+    // Download CSV file
+    downloadCSVFile(csv.join("\n"), filename);
+}
 
-        if (!csv.match(/^data:text\/csv/i)) {
-            csv = 'data:text/csv;charset=utf-8,' + csv;
-        }
-        data = encodeURI(csv);
-		link = document.createElement('a');
-        link.setAttribute('href', data);
-        console.log("Shantanu");
-        link.setAttribute('download', filename);
-        link.click();
+function downloadCSVFile(csv, filename) {
+    let csvFile;
+    let downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
 }
 
 
