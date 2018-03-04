@@ -6,6 +6,7 @@ var columnHead = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M
     'EA', 'EB', 'EC', 'ED', 'EE', 'EF', 'EG', 'EH', 'EI', 'EJ', 'EK', 'EL', 'EM', 'EN', 'EO', 'EP', 'EQ', 'ER', 'ES', 'ET', 'EU', 'EV', 'EW', 'EX', 'EY', 'EZ',
     'FA', 'FB', 'FC', 'FD', 'FE', 'FF', 'FG', 'FH', 'FI', 'FJ', 'FK', 'FL', 'FM', 'FN', 'FO', 'FP', 'FQ', 'FR', 'FS', 'FT', 'FU', 'FV', 'FW', 'FX', 'FY', 'FZ'];
 
+var arithmeticOperations = [];
 function addRow()
 {
     let myTable = document.getElementById("myTable");
@@ -56,7 +57,6 @@ function removeRow()
 
 function selectedCell(id)
 {
-
     //alert(document.getElementById(id).innerHTML);
     document.getElementById(id)
         .addEventListener("keyup", function(event) {
@@ -65,8 +65,12 @@ function selectedCell(id)
             	alert(id);
                 //document.getElementById("id_of_button").click();
                 //alert('Enter Clicked & value is : '+document.getElementById(id).innerHTML);
+
                 if(document.getElementById(id).textContent){
-                alert('Enter Clicked & value is : '+document.getElementById(id).textContent);
+                    let text = document.getElementById(id).textContent.trim();
+                    text = text.substring(2);
+                    text = text.substring(0, text.length-1);
+                    alert('Enter Clicked & value is : '+text);
 				}
             }
         });
@@ -93,6 +97,7 @@ function addColumn() {
         let tblBodyObj = document.getElementsByTagName('tr'); //table body
         if(h == 0) {
             let newTH = document.createElement('th');
+            newTH.contentEditable = 'true';
             tblHeadObj.rows[0].appendChild(newTH); //append ne th to table
             newTH.innerHTML = columnHead[tblHeadObj.rows[0].cells.length - 2]; //append th content to th
         }else if(h > 0)
@@ -131,7 +136,7 @@ function removeColumn()
     }
 }
 
-function exportTableToCSV(filename) {
+function generateCSV(filename) {
     let csv = [];
     let rows = document.querySelectorAll("table tr");
 
