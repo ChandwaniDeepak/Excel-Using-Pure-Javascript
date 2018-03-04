@@ -1,3 +1,4 @@
+
 var columnHead = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Q', 'Y', 'Z',
     'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ',
     'BA', 'BB', 'BC', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BK', 'BL', 'BM', 'BN', 'BO', 'BP', 'BQ', 'BR', 'BS', 'BT', 'BU', 'BV', 'BW', 'BQ', 'BY', 'BZ',
@@ -7,6 +8,7 @@ var columnHead = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M
     'FA', 'FB', 'FC', 'FD', 'FE', 'FF', 'FG', 'FH', 'FI', 'FJ', 'FK', 'FL', 'FM', 'FN', 'FO', 'FP', 'FQ', 'FR', 'FS', 'FT', 'FU', 'FV', 'FW', 'FX', 'FY', 'FZ'];
 
 var arithmeticOperations = [];
+
 function addRow()
 {
     let myTable = document.getElementById("myTable");
@@ -42,6 +44,7 @@ function addRow()
     //alert("Row count: "+myTable.rows.length);
 }
 
+
 function removeRow()
 {
     let myTable = document.getElementById("myTable");
@@ -62,18 +65,52 @@ function selectedCell(id)
         .addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
-            	alert(id);
+                //alert(id);
                 //document.getElementById("id_of_button").click();
                 //alert('Enter Clicked & value is : '+document.getElementById(id).innerHTML);
 
-                if(document.getElementById(id).textContent){
+                if(document.getElementById(id).textContent) {
                     let text = document.getElementById(id).textContent.trim();
                     text = text.substring(2);
-                    text = text.substring(0, text.length-1);
-                    alert('Enter Clicked & value is : '+text);
-				}
-            }
-        });
+                    text = text.substring(0, text.length - 1);
+
+
+                    let mulArray = [];
+                    let divArray = [];
+                    let result = 0;
+
+
+
+                    mulArray = text.split('*');
+                    divArray = text.split('/');
+                    console.log(text);
+                    console.log(text.indexOf('+'));
+                    if (text.indexOf('+') > -1) {
+                        let addArray = [];
+                        addArray = text.split('+');
+                        result = parseInt(document.getElementById(addArray[0]).textContent, 10);//getting 1st value
+                        for (let x = 1; x < addArray.length; x++) {
+                            result += parseInt(document.getElementById(addArray[x]).textContent, 10);
+                        }
+                        arithmeticOperations.push(document.getElementById(id).textContent);
+                        document.getElementById(id).innerText = result;
+
+                        //alert('Enter Clicked & value is : '+text);
+                    } else if (text.indexOf("-") > -1) {
+                        let subArray = [];
+                        subArray = text.split('-');
+                        result = parseInt(document.getElementById(subArray[0]).textContent, 10);//getting 1st value
+                        for (let x = 1; x < subArray.length; x++) {
+                            result -= parseInt(document.getElementById(subArray[x]).textContent, 10);
+                        }
+                        arithmeticOperations.push(document.getElementById(id).textContent);
+                        document.getElementById(id).innerText = result;
+
+                        alert('Enter Clicked & value is : ' + text);
+                    }
+                }
+        }
+    });
 }
 
 /*
