@@ -73,18 +73,10 @@ function selectedCell(id)
                     let text = document.getElementById(id).textContent.trim();
                     text = text.substring(2);
                     text = text.substring(0, text.length - 1);
-
-
-                    let mulArray = [];
-                    let divArray = [];
                     let result = 0;
-
-
-
-                    mulArray = text.split('*');
-                    divArray = text.split('/');
                     console.log(text);
                     console.log(text.indexOf('+'));
+
                     if (text.indexOf('+') > -1) {
                         let addArray = [];
                         addArray = text.split('+');
@@ -94,8 +86,9 @@ function selectedCell(id)
                         }
                         arithmeticOperations.push(document.getElementById(id).textContent);
                         document.getElementById(id).innerText = result;
-
                         //alert('Enter Clicked & value is : '+text);
+
+
                     } else if (text.indexOf("-") > -1) {
                         let subArray = [];
                         subArray = text.split('-');
@@ -105,8 +98,32 @@ function selectedCell(id)
                         }
                         arithmeticOperations.push(document.getElementById(id).textContent);
                         document.getElementById(id).innerText = result;
+                        //alert('Enter Clicked & value is : ' + text);
 
-                        alert('Enter Clicked & value is : ' + text);
+
+                    }else if (text.indexOf("*") > -1) {
+                        let mulArray = [];
+                        mulArray = text.split('*');
+                        result = parseInt(document.getElementById(mulArray[0]).textContent, 10);//getting 1st value
+                        for (let x = 1; x < mulArray.length; x++) {
+                            result *= parseInt(document.getElementById(mulArray[x]).textContent, 10);
+                        }
+                        arithmeticOperations.push(document.getElementById(id).textContent);
+                        document.getElementById(id).innerText = result;
+                        //alert('Enter Clicked & value is : ' + text);
+
+
+                    }else if (text.indexOf("/") > -1) {
+                        let divArray = [];
+                        divArray = text.split('/');
+                        result = parseInt(document.getElementById(divArray[0]).textContent, 10);//getting 1st value
+                        for (let x = 1; x < divArray.length; x++) {
+                            result /= parseInt(document.getElementById(divArray[x]).textContent, 10);
+                        }
+                        arithmeticOperations.push(document.getElementById(id).textContent);
+                        document.getElementById(id).innerText = result;
+
+                        //alert('Enter Clicked & value is : ' + text);
                     }
                 }
         }
