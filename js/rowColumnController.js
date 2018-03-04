@@ -21,8 +21,8 @@ function addRow()
         cell.id = (myTableHead[i+1].innerHTML)+rowCount;
         //cell.id = (myTableHead[i+1].innerHTML)+rowCount;
         cell.contentEditable = 'true';
-        console.log("column id "+(myTableHead[i+1])+rowCount);
-        //console.log("Head id "+(myTableHead[i+1].innerHTML));
+        //console.log("column id "+(myTableHead[i+1])+rowCount);
+        //console.log("cell id "+(myTableHead[i+1].innerHTML)+rowCount);
         //table.rows[1].cells[i].headers
         if(i == 0)
         {
@@ -44,60 +44,9 @@ function removeRow()
     if(myTable.rows.length > 1) {
         myTable.deleteRow(myTable.rows.length - 1);
     }
-
 }
 
-// function addColumn(){
-//     let myTable = document.getElementById("myTable");
-//     let myTableHeadObj = document.getElementById("myTable").tHead;
-//     let myTableHead = document.querySelectorAll("th");
-//     let rowCount = myTable.rows.length - 1;
-//     let addColumn = myTable.rows[0]
-//     let columnCount = myTable.rows[0].cells.length;
-//
-//     for (let i = columnCount; i < columnHead.length; i++) {
-//         let newHead = document.createElement('th');
-//         newHead.innerHTML = columnHead[i];
-//         myTableHeadObj.rows[i].appendChild(newHead);
-//         console.log("new Column name: "+ columnHead[i]);
-//
-//
-//
-//         //createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), i, 'col');
-//     }
-// }
 
-//
-// function addColumn() {
-//     let tblHeadObj = document.getElementById('myTable').tHead; //table head
-//     //for (let h=0; h< tblHeadObj.rows.length; h++) {
-//         let newTH = document.createElement('th');
-//         tblHeadObj.rows[0].appendChild(newTH); //append ne th to table
-//         newTH.innerHTML = columnHead[tblHeadObj.rows[0].cells.length - 2]; //append th content to th
-//     //}
-//     addColumnBody();
-//
-//
-// }
-//
-// function addColumnBody()
-// {
-//
-//     let myTable = document.getElementById("myTable");
-//     let columnCount = myTable.rows[0].cells.length;
-//
-//
-//     let tblBodyObj = document.getElementById('myTable').tBodies[0]; //table body
-//     let myTableHead = document.querySelectorAll("th");
-//     let myTableBody = document.querySelectorAll("tr");
-//     //myTableBody.rows[]
-//     console.log("tblBodyObj.rows.length : "+myTableBody.rows.length);
-//     //for (let i=0; i< tblBodyObj.rows.length; i++) {
-//     for (let i=0; i< myTableBody.rows.length; i++) {
-//         let cell = tblBodyObj.rows[i].insertCell(-1); //create new cell
-//         cell.id = (myTableHead[i+1].innerHTML)+tblBodyObj.rows.length;
-//         cell.contentEditable = 'true';
-//         console.log("newCellID: "+(myTableHead[i+1].innerHTML)+tblBodyObj.rows.length);
-//         //newCell.innerHTML = 'cell '+ (tblBodyObj.rows[i].cells.length); //append data to cell
-//     }
-// }
+
+
+
